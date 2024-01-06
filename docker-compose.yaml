@@ -1,7 +1,23 @@
 version: '3.9'
-
 services:
-  web:
-    image: 'shangavism/kube-jenkins:latest'
+  postgres:
+    image: hangavism/kube-jenkins:latest
+    environment:
+      POSTGRES_USER: db-user
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: shangavi-db
+    ports:
+      - "5432:5432"
+
+  nodejs-app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      PGHOST: postgres
+      PGUSER: db-user
+      PGPASSWORD: 12345
+      PGDATABASE: shangavi-db
     ports:
       - "8000:8000"
+
