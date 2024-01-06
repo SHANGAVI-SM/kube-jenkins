@@ -7,7 +7,7 @@ node {
 
      stage("Build") {
 
-       sh 'docker build -t kube-jenkins:latest .'
+       sh 'docker build . -t shangavism/kube-jenkins:latest'
        sh 'docker image list'
 
     }
