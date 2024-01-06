@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: node-eks
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: node-eks
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: node-eks
-          image: praveensingam1994/node-eks:latest
+          image: shangavism/kube-jenkins:latest
           ports:
             - containerPort: 8000
           env:

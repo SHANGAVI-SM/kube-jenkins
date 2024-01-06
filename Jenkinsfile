@@ -7,17 +7,17 @@ node {
 
      stage("Build") {
 
-       sh 'docker build . -t praveensingam1994/node-test:latest'
+       sh 'docker build . -t shangavism/kube-jenkins:latest'
        sh 'docker image list'
 
     }
 
     withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
-        sh 'docker login -u praveensingam1994 -p $PASSWORD'
+        sh 'docker login -u shangavism -p $PASSWORD'
     }
 
     stage("Push Image to Docker Hub"){
-        sh 'docker push praveensingam1994/node-test:latest'
+        sh 'docker push shangavism/kube-jenkins:latest'
     }
 
     stage("kubernetes deployment"){
