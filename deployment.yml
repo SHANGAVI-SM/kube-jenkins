@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-eks
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-eks
+  template:
+    metadata:
+      labels:
+        app: node-eks
+    spec:
+      containers:
+        - name: node-eks
+          image: praveensingam1994/node-eks:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: PORT
+              value: "8000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-eks
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8000
+  selector:
+    app: node-eks
