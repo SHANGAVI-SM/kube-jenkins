@@ -23,7 +23,7 @@ node {
     stage("kubernetes deployment"){
         steps{
             
-            sh 'kubectl config use-context minikube'
+            sh 'kubectl config use-context minikube --insecure-skip-tls-verify'
             sh 'kubectl apply -f deployment.yml --context minikube'
         }
         
