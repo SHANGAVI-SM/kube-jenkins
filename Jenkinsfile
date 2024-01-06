@@ -21,6 +21,11 @@ node {
     }
 
     stage("kubernetes deployment"){
-        sh 'kubectl apply -f deployment.yml --context minikube'
+        steps{
+            
+            sh 'kubectl config use-context minikube'
+            sh 'kubectl apply -f deployment.yml --context minikube'
+        }
+        
     }
 }
