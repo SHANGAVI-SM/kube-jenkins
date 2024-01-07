@@ -1,23 +1,22 @@
-version: '3.9'
+version: '3'
+
 services:
-  postgres:
-    image: shangavism/kube-jenkins:latest
-    environment:
-      POSTGRES_USER: db-user
-      POSTGRES_PASSWORD: 12345
-      POSTGRES_DB: shangavi-db
-    ports:
-      - "5432:5432"
 
   nodejs-app:
-    build: .
-    depends_on:
-      - postgres
-    environment:
-      PGHOST: postgres
-      PGUSER: db-user
-      PGPASSWORD: 12345
-      PGDATABASE: shangavi-db
+    image: shangavism/kube-jenkins-app:latest
+    build: 
+      context: .
+      dockerfile: Dockerfile.node
     ports:
       - "8000:8000"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: shangavism/kube-jenkins-db:latest
+    build: 
+      context: .
+      dockerfile: Dockerfile.db
+    ports:
+      - "5432:5432"
 

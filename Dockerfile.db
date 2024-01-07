@@ -1,0 +1,7 @@
+FROM postgres:latest
+
+ENV POSTGRES_DB = Shangavi-db
+ENV POSTGRES_USER = Shangavi
+ENV POSTGRES_PASSWORD = 12345
+
+EXPOSE 5432
