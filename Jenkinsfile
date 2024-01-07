@@ -7,8 +7,8 @@ node {
 
      stage("Build") {
 
-       sh 'docker-compose up'
-       sh 'docker image list'
+       sh 'docker-compose up -d'
+       sh 'docker images'
 
     }
 
