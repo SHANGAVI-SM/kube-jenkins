@@ -7,6 +7,7 @@ node {
 
      stage("Build") {
 
+       sh 'docker rmi -f shangavism/kube-jenkins:latest'
        sh 'docker-compose up -d'
        sh 'docker images'
 
