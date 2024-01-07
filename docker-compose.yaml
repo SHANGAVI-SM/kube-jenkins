@@ -3,20 +3,20 @@ version: '3'
 services:
 
   nodejs-app:
-    image: shangavism/kube-jenkins-app:latest
     build: 
       context: .
       dockerfile: Dockerfile.node
+    image: shangavism/kube-jenkins-app:latest
     ports:
       - "8000:8000"
     depends_on:
       - postgres
 
   postgres:
-    image: shangavism/kube-jenkins-db:latest
     build: 
       context: .
       dockerfile: Dockerfile.db
+    image: shangavism/kube-jenkins-db:latest
     ports:
       - "5432:5432"
 
