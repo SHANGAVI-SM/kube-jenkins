@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   postgres:
-    image: hangavism/kube-jenkins:latest
+    image: shangavism/kube-jenkins:latest
     environment:
       POSTGRES_USER: db-user
       POSTGRES_PASSWORD: 12345
