@@ -18,7 +18,7 @@ node {
     }
 
     stage("Push Image to Docker Hub"){
-        sh 'docker push shangavism/kube-jenkins:latest'
+        sh 'docker push shangavism/kube-jenkins-app:latest'
     }
 
     stage("kubernetes deployment"){
